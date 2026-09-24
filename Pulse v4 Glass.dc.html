@@ -2932,7 +2932,7 @@ const CO = {
   office:"Navan, Co. Meath", plant:"Kingscourt, Co. Cavan", apart:"55 minutes",
   lorries:6, forklifts:3, pricers:5
 };
-const ME = {name:"Donna Kavanagh", first:"Donna", initials:"DK", role:"Sales Manager"};
+const ME = {name:"Yanka Laila Alves", first:"Yanka", initials:"YA", role:"Operations & Fulfilment"};
 const STAFF = [
   {name:"Donna Kavanagh", initials:"DK", role:"Sales Manager", dept:"Sales", site:"Office", tint:"#2f6fbf"},
   {name:"Yanka Laila Alves", initials:"YA", role:"Operations & Fulfilment", dept:"Operations", site:"Office", tint:"#6ad0f0"},
@@ -3549,7 +3549,7 @@ const AI_EVENTS = [
   ["Load Timer closed the week","" + MP.loadCount + " loads, " + MP.loadAvg + " minutes on average, forklift idle at " + MP.forkliftIdle + "%.","Load Timer","Kingscourt plant","Agent","completed"],
   ["Agent paused for approval","Follow-up mail to the nineteen oldest enquiries drafted \u2014 needs your yes.","Enquiry Catcher","19 enquiries","Agent","awaiting"],
   ["Ops Watchdog raised a failure","EMS Planner token expired at 02:10; two bed schedules are queued.","Ops Watchdog","Kingscourt plant","Agent","failed"],
-  ["Briefing posted the morning brief","Two things needed you. The rest was noise.","Briefing","Donna Kavanagh","WhatsApp","completed"]
+  ["Briefing posted the morning brief","Two things needed you. The rest was noise.","Briefing",ME.name,"WhatsApp","completed"]
 ];
 
 const STREAM_DEFS = [
@@ -3747,7 +3747,7 @@ const AGENT_DEFS = [
    thread:[
      {kind:"stamp", text:"Today 07:00"},
      {kind:"routine", text:"Ran routine", routine:"Morning briefing"},
-     {kind:"agent", text:"Morning Donna \u2014 " + MP.coldCount + " enquiries worth " + euro(MP.coldValue) + " have had no follow-up, " + MP.coldOver30 + " of them over 30 days old. And 6 product lines are sold against stock the yard doesn\u2019t have, worth " + euro(MP.oversoldValue) + "."},
+     {kind:"agent", text:"Morning " + ME.first + " \u2014 " + MP.coldCount + " enquiries worth " + euro(MP.coldValue) + " have had no follow-up, " + MP.coldOver30 + " of them over 30 days old. And 6 product lines are sold against stock the yard doesn\u2019t have, worth " + euro(MP.oversoldValue) + "."},
      {kind:"agent", text:"the rest of it:", lines:[
        {k:"Pipeline", v:MP.enquiryCount + " enquiries in \u00b7 " + MP.quoteCount + " quoted \u00b7 " + MP.winRate + "% win rate"},
        {k:"Plant", v:MP.actualToday + " units off the beds against " + MP.plannedToday + " planned"},
@@ -3927,7 +3927,7 @@ const FILTER_GROUPS = [
 const OPS_DEFS = [
   {id:"o1", name:"Morning briefing", kind:"routine", owner:"Briefing", ownerKind:"agent", initials:"BR",
    trigger:"Weekdays, 07:00", triggerKind:"schedule", next:runLabel(nextWorkday(), "07:00"), last:"Delivered 07:02", status:"healthy", rate:100, on:true,
-   what:"Reads the whole business overnight and tells Donna the two things that actually need her.",
+   what:"Reads the whole business overnight and tells " + ME.first + " the two things that actually need doing.",
    why:"The morning started with five screens and a phone call to the plant.",
    saved:"9 hours a month",
    steps:[["Trigger","Every weekday at 07:00"],["Find","Overnight changes across pipeline, yard and dispatch"],["Check","Drop anything already handled"],["Draft","Write the briefing"],["Send","Post to Home and WhatsApp"]],
